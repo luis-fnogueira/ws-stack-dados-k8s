@@ -21,6 +21,7 @@ spec:
         app.kubernetes.io/component: metastore
         app.kubernetes.io/instance: {{ .Release.Name | quote }}
     spec:
+      nodeName: 10.0.1.10
       containers:
       - name: metastore
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

@@ -5,7 +5,6 @@ metadata:
   namespace: gitops
 spec:
   project: default
-  nodeName: 10.0.1.10
   source:
     repoURL: 'https://github.com/luis-fnogueira/ws-stack-dados-k8s.git'
     path: infra/src/helm-charts/hive-metastore

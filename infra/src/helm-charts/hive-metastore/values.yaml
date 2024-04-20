@@ -1,12 +1,30 @@
 image:
-  repository: bitsondatadev/hive-metastore
-  tag: latest
-  pullPolicy: IfNotPresent
+  repository: 5200710/hive
+  tag: 3.1.3-postgresql-metastore
+#  pullPolicy: Always
 
+resources: { }
 
-replicas: 1
-resources: {}
+# Also deploy an internal postgresql hive-metastore requirement
+hive-metastore:
+  enabled: true
+  postgresql:
+    enabled: true
+    host: ~
+    port: 5432
+    auth:
+      database: "metastore"
+      username: "hive"
+      password: "hive"
+
 conf:
+  logLevel: INFO
+  # if not set, default hive.metastore.uris is default uri from metastore requirement:
+  # "thrift://{{.Release.Name}}-metastore:9083"
+  # hive.metastore.warehouse.dir: hdfs://my-hdfs.bigdata.svc.cluster.local:9820/user/hive/warehouse
+  hdfsAdminUser: hdfs
+  # if not set, default is configMap from hdfs requirement {{.Release.Name}}-hdfs-hadoop
+  hadoopConfigMap: ~
   hiveSite:
     hive_metastore_uris: thrift://hive-metastore:9083
     hive.metastore.warehouse.dir: s3a://metastore/warehouse/
@@ -16,10 +34,6 @@ conf:
     fs.s3a.endpoint: http://minio.deepstorage.svc.Cluster.local
     fs.s3a.path.style.access: true
     fs.s3a.connection.ssl.enabled: false
-
-service:
-  type: ClusterIP
-  port: 9083
 
 env:
   - name: SECRET_KEY

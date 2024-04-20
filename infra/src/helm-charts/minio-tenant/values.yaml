@@ -37,7 +37,7 @@ tenant:
       ## volumesPerServer specifies the number of volumes attached per MinIO Tenant Pod / Server.
       volumesPerServer: 1
       ## size specifies the capacity per volume
-      size: 10Gi
+      size: 5Gi
       ## storageClass specifies the storage class name to be used for this pool
       storageClassName: oci-bv
       ## Used to specify annotations for pods

@@ -13,7 +13,7 @@ spec:
       valueFiles:
         - values.yaml
   destination:
-      name: https://kubernetes.default.svc
+      name: 'context-cone6lblzna'
       namespace: deepstorage
       server: ''
   syncPolicy:

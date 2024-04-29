@@ -114,6 +114,7 @@ tenant:
   #     region: us-east-1        # optional
   buckets:
     - name: landing
+    - name: bronze
   ## List of secret names to use for generating MinIO users during tenant provisioning
   users: [ ]
   ## PodManagement policy for MinIO Tenant Pods. Can be "OrderedReady" or "Parallel"

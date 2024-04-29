@@ -13,8 +13,8 @@ spec:
       valueFiles:
         - values.yaml
   destination:
-      name: 'context-cone6lblzna'
-      namespace: deepstorage
+      name: 'arn:aws:eks:us-east-1:910792074719:cluster/cluster-npoprod'
+      namespace: example-minio
       server: ''
   syncPolicy:
     syncOptions:
